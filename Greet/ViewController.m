@@ -28,4 +28,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)gotoAddInfoView:(id)sender {
+    [self performSegueWithIdentifier:@"addInfoSegue" sender:nil];
+}
 @end

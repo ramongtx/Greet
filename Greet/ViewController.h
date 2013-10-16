@@ -13,4 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *border1;
 @property (weak, nonatomic) IBOutlet DragView *drag1;
 
+
+- (IBAction)gotoAddInfoView:(id)sender;
+
 @end
