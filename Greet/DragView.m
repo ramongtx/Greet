@@ -38,6 +38,7 @@
     self.maxX = self.center.x + 175;
     self.minY = self.center.y;
     self.maxY = self.center.y + 175;
+    self.desaturation = 0;
 }
 
 - (void)touchesMoved:(NSSet *)set withEvent:(UIEvent *)event {
@@ -52,7 +53,36 @@
     else k.x = p.x;
     
     self.center = k;
-    self.image;
+}
+
+-(void)setSaturation:(float)sat;
+{
+    saturation = sat;
+    [self setNeedsDisplay];
+}
+
+- (id)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor clearColor]; // else background is black
+        desaturation = 0.0; // default is no effect
+    }
+    return self;
+}
+
+- (void)drawRect:(CGRect)rect {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    
+    CGContextTranslateCTM(context, 0.0, self.bounds.size.height); // flip image right side up
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    CGContextDrawImage(context, rect, self.image.CGImage);
+    CGContextSetBlendMode(context, kCGBlendModeSaturation);
+    CGContextClipToMask(context, self.bounds, self.image.CGImage); // restricts drawing to within alpha channel
+    CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, desaturation);
+    CGContextFillRect(context, rect);
+    
+    CGContextRestoreGState(context); // restore state to reset blend mode
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
