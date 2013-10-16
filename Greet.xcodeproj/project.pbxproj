@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F607EFED180F04650090665B /* DragView.m in Sources */ = {isa = PBXBuildFile; fileRef = F607EFEC180F04650090665B /* DragView.m */; };
 		F67B8DD8180EFB7D00CE4F55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67B8DD7180EFB7D00CE4F55 /* Foundation.framework */; };
 		F67B8DDA180EFB7D00CE4F55 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67B8DD9180EFB7D00CE4F55 /* CoreGraphics.framework */; };
 		F67B8DDC180EFB7D00CE4F55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67B8DDB180EFB7D00CE4F55 /* UIKit.framework */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F607EFEB180F04650090665B /* DragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragView.h; sourceTree = "<group>"; };
+		F607EFEC180F04650090665B /* DragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragView.m; sourceTree = "<group>"; };
 		F67B8DD4180EFB7D00CE4F55 /* Greet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Greet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F67B8DD7180EFB7D00CE4F55 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F67B8DD9180EFB7D00CE4F55 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +82,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F607EFEA180F04370090665B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F607EFEB180F04650090665B /* DragView.h */,
+				F607EFEC180F04650090665B /* DragView.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		F67B8DCB180EFB7C00CE4F55 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +124,7 @@
 		F67B8DDD180EFB7D00CE4F55 /* Greet */ = {
 			isa = PBXGroup;
 			children = (
+				F607EFEA180F04370090665B /* UI */,
 				F67B8DE6180EFB7D00CE4F55 /* AppDelegate.h */,
 				F67B8DE7180EFB7D00CE4F55 /* AppDelegate.m */,
 				F67B8DE9180EFB7D00CE4F55 /* Main.storyboard */,
@@ -251,6 +264,7 @@
 			files = (
 				F67B8DEE180EFB7D00CE4F55 /* ViewController.m in Sources */,
 				F67B8DE8180EFB7D00CE4F55 /* AppDelegate.m in Sources */,
+				F607EFED180F04650090665B /* DragView.m in Sources */,
 				F67B8DE4180EFB7D00CE4F55 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +474,7 @@
 				F67B8E08180EFB7D00CE4F55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F67B8E09180EFB7D00CE4F55 /* Build configuration list for PBXNativeTarget "GreetTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +483,7 @@
 				F67B8E0B180EFB7D00CE4F55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

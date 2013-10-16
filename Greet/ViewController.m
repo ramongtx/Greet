@@ -17,6 +17,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.border1.layer setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.border1.layer setBorderWidth: 1.0];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
