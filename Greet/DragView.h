@@ -19,7 +19,4 @@
 @property (nonatomic) CGFloat maxY;
 @property (nonatomic) CGFloat minY;
 
-@property (nonatomic) float desaturation;
-
-
 @end
