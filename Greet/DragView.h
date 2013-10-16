@@ -19,6 +19,4 @@
 @property (nonatomic) CGFloat maxY;
 @property (nonatomic) CGFloat minY;
 
-@property (strong,nonatomic) UIImage* imageBackup;
-
 @end
