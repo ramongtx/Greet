@@ -80,6 +80,7 @@
 }
 
 - (IBAction)backToGreet:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)dismissKeyboard
