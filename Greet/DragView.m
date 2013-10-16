@@ -35,9 +35,9 @@
     self.lockOnX = NO;
     self.sticky = YES;
     self.minX = self.center.x;
-    self.maxX = self.center.x + 200;
+    self.maxX = self.center.x + 175;
     self.minY = self.center.y;
-    self.maxY = self.center.y + 200;
+    self.maxY = self.center.y + 175;
 }
 
 - (void)touchesMoved:(NSSet *)set withEvent:(UIEvent *)event {
@@ -52,6 +52,7 @@
     else k.x = p.x;
     
     self.center = k;
+    self.image;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
