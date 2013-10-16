@@ -38,6 +38,7 @@
     self.maxX = self.center.x + 175;
     self.minY = self.center.y;
     self.maxY = self.center.y + 175;
+    self.imageBackup = self.image;
 }
 
 - (void)touchesMoved:(NSSet *)set withEvent:(UIEvent *)event {
@@ -52,6 +53,41 @@
     else k.x = p.x;
     
     self.center = k;
+}
+
++ (UIImage *)getBlackAndWhiteVersionOfImage:(UIImage *)anImage
+{
+    UIImage *newImage;
+    UIImage *imageToDisplay;
+    
+    int orientation = anImage.imageOrientation;
+    
+    if (anImage) {
+        CGColorSpaceRef colorSapce = CGColorSpaceCreateDeviceGray();
+        CGContextRef context = CGBitmapContextCreate(nil, anImage.size.width * anImage.scale, anImage.size.height * anImage.scale, 8, anImage.size.width * anImage.scale, colorSapce, kCGImageAlphaNone);
+        CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
+        CGContextSetShouldAntialias(context, NO);
+        CGContextDrawImage(context, CGRectMake(0, 0, anImage.size.width, anImage.size.height), [anImage CGImage]);
+        
+        CGImageRef bwImage = CGBitmapContextCreateImage(context);
+        CGContextRelease(context);
+        CGColorSpaceRelease(colorSapce);
+        
+        UIImage *resultImage = [UIImage imageWithCGImage:bwImage];
+        CGImageRelease(bwImage);
+        
+        UIGraphicsBeginImageContextWithOptions(anImage.size, NO, anImage.scale);
+        [resultImage drawInRect:CGRectMake(0.0, 0.0, anImage.size.width, anImage.size.height)];
+        newImage = UIGraphicsGetImageFromCurrentImageContext();
+        imageToDisplay =
+        [UIImage imageWithCGImage:[newImage CGImage]
+                            scale:1.0
+                      orientation: orientation];
+        
+        UIGraphicsEndImageContext();
+    }
+    
+    return imageToDisplay;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -83,6 +119,9 @@
             else k.y = self.minX;
         }
     }
+    
+    if (k.x == self.maxX) self.image = [DragView getBlackAndWhiteVersionOfImage:self.image];
+    else self.image = self.imageBackup;
     self.center = k;
 }
 
