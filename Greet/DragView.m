@@ -57,17 +57,10 @@
 
 -(void)setSaturation:(float)sat;
 {
-    saturation = sat;
+    self.desaturation = sat;
     [self setNeedsDisplay];
 }
 
-- (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor clearColor]; // else background is black
-        desaturation = 0.0; // default is no effect
-    }
-    return self;
-}
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -79,8 +72,9 @@
     CGContextDrawImage(context, rect, self.image.CGImage);
     CGContextSetBlendMode(context, kCGBlendModeSaturation);
     CGContextClipToMask(context, self.bounds, self.image.CGImage); // restricts drawing to within alpha channel
-    CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, desaturation);
+    CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, self.desaturation);
     CGContextFillRect(context, rect);
+    self.backgroundColor = [UIColor colorWithHue:100 saturation:self.desaturation brightness:0.5 alpha:1];
     
     CGContextRestoreGState(context); // restore state to reset blend mode
 }
@@ -115,6 +109,7 @@
         }
     }
     self.center = k;
+    [self setSaturation:(k.x-self.minX)/self.maxX];
 }
 
 /*
